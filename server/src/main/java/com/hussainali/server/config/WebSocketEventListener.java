@@ -2,19 +2,21 @@ package com.hussainali.server.config;
 
 import com.hussainali.server.chat.ChatMessage;
 import com.hussainali.server.chat.MessageType;
+import com.hussainali.server.service.ChatMessageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
+import org.springframework.web.socket.messaging.SessionConnectEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
 @Component
 @RequiredArgsConstructor
 @Slf4j
 public class WebSocketEventListener {
-
     private final SimpMessageSendingOperations messageTemplate;
 
     @EventListener
@@ -31,6 +33,7 @@ public class WebSocketEventListener {
                     .build();
 
             messageTemplate.convertAndSend("/chatroom/public",chatMessage);
+
         }
     }
 }
