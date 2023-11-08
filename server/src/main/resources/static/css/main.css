@@ -203,13 +203,23 @@ button.accent {
     font-weight: 600;
 }
 
-#chat-page .chat-message .datetime span {
-    color: gray;
-    font-weight: 600;
+
+#chat-page .chat-message  span.datetime {
+    color: rgb(128, 128, 128);
+    font-weight: 300;
+    font-size: smaller;
+    font-style: italic;
 }
 
 #chat-page .chat-message p {
     color: #43464b;
+    word-wrap: normal;
+}
+
+@media (max-width: 768px) {
+    #chat-page .chat-message p {
+        word-wrap: break-word;
+    }
 }
 
 #messageForm .input-group input {
